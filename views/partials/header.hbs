@@ -1,0 +1,59 @@
+  <div class="container-fluid navbar-fixed-top navbar-style">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+     <div class="navbar-brand hell">
+        <a href="/">
+            <strong>MOBILE STORE</strong>
+        </a>
+      </div>
+    <div class="col-xs-6 col-xs-offset-1 vcenter">
+        <div class="input-group">
+            <input type="hidden" name="search_param" value="all" id="search_param">
+            <input type="text"
+                   class="form-control"
+                   name="x"
+                   id="search"
+                   placeholder="Search for your desired phone">
+            <span class="input-group-btn">
+               <button class="btn btn-default" type="button"
+                onclick="var term = document.getElementById('search').value;
+                         var url = '/search/' + term;
+                         if(term){location.href=url;}else{alert('Please enter a search term');}">
+                   <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+       </div>
+   </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/shopping-cart">
+                <i class="fa fa-cart-plus" aria-hidden="true"></i> Shopping Cart
+                {{# if session.cart.totalQty }}
+                    <span class="badge">{{session.cart.totalQty}}</span>
+                {{/if}}
+            </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {{# if login }}
+                <li><a href="/user/profile"> User Account</a></li>
+                <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+            {{ else }}
+                <li><a href="/user/signup"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign Up</a></li>
+                <li><a href="/user/signin"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>
+            {{/if}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
